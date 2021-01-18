@@ -3,7 +3,7 @@ const express = require('express'); // requiero el modulo express
 const app = express();
 const port = 3000
 const indexRouter = require('./routes/indexRoutes')
-
+const productRouter = require('./routes/productosRoutes')
 
 /* Configuraciones */
 
@@ -16,7 +16,7 @@ app.use(express.static(__dirname + '/public')); //configuro los recursos estatic
 /* Rutas */
 
 app.use('/',indexRouter);
-
+app.use('/productos',productRouter);
 
 
 /* Puerto */

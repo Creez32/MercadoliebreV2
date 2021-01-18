@@ -3,7 +3,6 @@ const router = express.Router() //requiero el metodo Router
 
 const productosController = require('../controllers/productosController');
 
-router.get('/',productosController.autos)
-router.get('/detalle/:id/:category',productosController.detalle)
+router.get('/detalles/:id/:category',productosController.detalles)
 
 module.exports = router
