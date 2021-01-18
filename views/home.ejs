@@ -20,67 +20,59 @@
                         <h2>Basado en tu última visita</h2>
                     </div>
 
+                    <div class="container">
+                        <div class="row">
+                            <% visitedProducts.forEach(producto=> { %>
 
-                    <%- include('partials/products') %>
-
-
-                        <div class="col-12">
-                            <h2>Ofertas</h2>
-                        </div>
-
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <div class="contenido">
-                                <img src="/images/img-cafetera-moulinex.jpg" alt="">
-                                <div class="datos">
-                                    <h3>$6.770</h3>
-                                    <span>40% OFF</span>
-                                    <p>Cafetera moulinex Dolce Gusto Lorem ipsum </p>
-                                    <i class="fas fa-truck"></i>
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <a href="productos/detalles/<%= producto.id %>/<%= producto.category%>  ">
+                                        <div class="contenido card mx-auto" style="width: 98%;">
+                                            <img src="/images/<%= producto.image %>" class="card-img-top" alt=>
+                                            <div class="datos">
+                                                <h3>$<%= toThousand(producto.price - Math.round(producto.price / 100 * producto.discount)) %></h3>
+                                                <% if (producto.discount> 0) { %>
+                                                <span><%= producto.discount %>% OFF</span>
+                                                <% } %>
+                                                <p><%= producto.name %></p>
+                                                <i class="fas fa-truck"></i>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>
+                                <% }) %>
                         </div>
+                    </div>
 
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <div class="contenido">
-                                <img src="/images/img-macbook-pro-2019.jpg" alt="">
-                                <div class="datos">
-                                    <h3>$150.970</h3>
-                                    <span>10% OFF</span>
-                                    <p>Macbook Pro 2019 Lorem ipsum, dolor sit amet.</p>
-                                    <i class="fas fa-truck"></i>
-                                </div>
-                            </div>
+
+                    <div class="col-12">
+                        <h2>Ofertas</h2>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <% saleProducts.forEach(producto=> { %>
+                                <a href="productos/detalles/<%= producto.id %>/<%= producto.category%>  ">
+                                    <div class="col-12 col-md-6 col-lg-3">
+                                        <div class="contenido card mx-auto" style="width: 98%;">
+                                            <img src="/images/<%= producto.image %>" class="card-img-top" alt=>
+                                            <div class="datos">
+                                                <h3>$<%= toThousand(producto.price - Math.round(producto.price / 100 * producto.discount)) %></h3>
+                                                <% if (producto.discount> 0) { %>
+                                                <span><%= producto.discount %>% OFF</span>
+                                                <% } %>
+                                                <p><%= producto.name %></p>
+                                                <i class="fas fa-truck"></i>
+                                            </div>
+                                        </div>
+                                </a>
                         </div>
-
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <div class="contenido">
-                                <img src="images/img-tv-samsung-smart.jpg" alt="">
-                                <div class="datos">
-                                    <h3>$54.230</h3>
-                                    <p>Televisor Samsung Smart TV Lorem ipsum, dolor sit amet.</p>
-                                    <i class="fas fa-truck"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <div class="contenido">
-                                <img src="/images/img-samsung-galaxy-s10.jpg" alt="">
-                                <div class="datos">
-                                    <h3>$89.410</h3>
-                                    <span>20% OFF</span>
-                                    <p>Samsung Galaxy s10 Lorem ipsum, dolor sit amet.</p>
-                                    <i class="fas fa-truck"></i>
-                                </div>
-                            </div>
-                        </div>
-
+                        <% }) %>
+                    </div>
                 </div>
-            </section>
 
-            <%- include('partials/footer') %>
+                <%- include('partials/footer') %>
 
-                <%- include('partials/scripts') %>
+                    <%- include('partials/scripts') %>
 
 
 </body>
